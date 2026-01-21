@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bajana Music</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Side Menu -->
+<div id="sideMenu" class="side-menu">
+  <h3>Menu</h3>
+  <a onclick="goTo('home')">🏠 Home</a>
+  <a onclick="goTo('trending')">🔥 Trending</a>
+  <a onclick="goTo('recent')">🕒 Recently Played</a>
+  <a onclick="goTo('favorites')">❤️ Favourites</a>
+</div>
+
+<header class="top-bar">
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <h1>Bajana</h1>
+
+  <div class="search-box">
+    <input id="search" placeholder="What do you want to listen to?" />
+    <select id="filter">
+      <option value="all">All</option>
+      <option value="song">Songs</option>
+      <option value="artist">Artists</option>
+    </select>
+    <button onclick="searchSongs()">🔍</button>
+  </div>
+
+  <button id="themeBtn" onclick="toggleTheme()">🌓</button>
+</header>
+
+<!-- HOME WRAPPER -->
+<div id="homeWrapper">
+
+  <section class="home" id="home">
+    <h2 id="trending">Trending Now</h2>
+    <div id="trendGrid" class="music-grid"></div>
+
+    <h2>Popular Pop</h2>
+    <div id="popGrid" class="music-grid"></div>
+
+    <h2>Rock Classics</h2>
+    <div id="rockGrid" class="music-grid"></div>
+
+    <h2>Hindi Hits</h2>
+    <div id="hindiGrid" class="music-grid"></div>
+  </section>
+
+</div>
+
+<!-- SEARCH RESULTS -->
+<section id="searchSection">
+  <h2>Search Results</h2>
+  <div id="musicGrid" class="music-grid"></div>
+</section>
+
+<!-- RECENT -->
+<section id="recent">
+  <h2>Recently Played</h2>
+  <div id="recentGrid" class="music-grid"></div>
+</section>
+
+<!-- FAVOURITES -->
+<section id="favorites">
+  <h2>❤️ Favourites</h2>
+  <div id="favGrid" class="music-grid"></div>
+</section>
+
+<!-- Lyrics Modal -->
+<div id="lyricsModal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeLyrics()">×</span>
+    <h3 id="lyricsTitle"></h3>
+    <pre id="lyricsText"></pre>
+  </div>
+</div>
+
+<!-- Full Screen Player -->
+<div id="fullPlayer" class="full-player">
+  <span class="close-full" onclick="closeFullPlayer()">×</span>
+  <img id="fullCover" class="full-cover">
+  <h2 id="fullTitle"></h2>
+  <p id="fullArtist"></p>
+
+  <div class="full-controls">
+    <button onclick="togglePlay()">⏯</button>
+    <button onclick="openLyrics()">🎤 Lyrics</button>
+  </div>
+
+  <div class="full-seek">
+    <span id="fullCurrent">0:00</span>
+    <input type="range" id="fullProgress">
+    <span id="fullDuration">0:00</span>
+  </div>
+
+  <div class="full-volume">
+    🔊 <input type="range" id="fullVolume" min="0" max="1" step="0.01">
+  </div>
+</div>
+
+<!-- Bottom Player -->
+<footer class="player">
+  <img id="cover" onclick="openFullPlayer()">
+
+  <div class="info">
+    <h4 id="title">Select a song</h4>
+    <p id="artist"></p>
+
+    <div class="seek">
+      <span id="currentTime">0:00</span>
+      <input type="range" id="progress">
+      <span id="duration">0:00</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="togglePlay()">⏯</button>
+    <button onclick="openLyrics()">🎤</button>
+    <button onclick="toggleFavorite()">❤️</button>
+    <button onclick="openFullPlayer()">⛶</button>
+  </div>
+</footer>
+
+<audio id="audio"></audio>
+<script src="script.js"></script>
+</body>
+</html>

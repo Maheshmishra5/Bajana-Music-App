@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #121212;
+  color: white;
+  padding-bottom: 120px;
+}
+
+body.amoled { background: #000; }
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: #000;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  color: #1db954;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.top-bar h1 { color: #1db954; }
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -240px;
+  width: 220px;
+  height: 100%;
+  background: #000;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 10000;
+}
+
+.side-menu.show { left: 0; }
+
+.side-menu a {
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.side-menu a:hover { color: #1db954; }
+
+/* Search */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  padding: 5px;
+  border-radius: 30px;
+}
+
+.search-box input,
+.search-box select {
+  border: none;
+  outline: none;
+  padding: 8px;
+}
+
+.search-box button {
+  background: #1db954;
+  border: none;
+  border-radius: 50%;
+  padding: 8px 12px;
+}
+
+/* Sections */
+h2 {
+  padding: 22px 25px 12px;
+  font-size: 20px;
+}
+
+.music-grid {
+  padding: 0 25px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 20px;
+}
+
+/* Cards */
+.card {
+  background: #181818;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.card:hover {
+  background: #282828;
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Bottom Player */
+.player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #181818;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.player img {
+  width: 55px;
+  height: 55px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.info { flex: 1; margin-left: 15px; }
+
+.seek {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seek input { flex: 1; }
+
+.controls button {
+  background: none;
+  border: none;
+  color: #1db954;
+  font-size: 20px;
+  margin: 0 6px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+}
+
+.modal-box {
+  background: #181818;
+  width: 60%;
+  max-height: 70%;
+  margin: 5% auto;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+/* Full Screen */
+.full-player {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #2a2a2a, #000);
+  text-align: center;
+  padding-top: 40px;
+  z-index: 9999;
+}
+
+.full-cover { width: 280px; border-radius: 12px; }
+
+.full-seek {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.close-full {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
