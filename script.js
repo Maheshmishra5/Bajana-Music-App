@@ -24,6 +24,7 @@ const fullProgress = document.getElementById("fullProgress");
 const fullCurrent = document.getElementById("fullCurrent");
 const fullDuration = document.getElementById("fullDuration");
 const fullVolume = document.getElementById("fullVolume");
+const fullLyricsText = document.getElementById("fullLyricsText");
 
 const sideMenu = document.getElementById("sideMenu");
 
@@ -45,7 +46,6 @@ function goTo(id) {
 function searchSongs() {
   let q = search.value.trim();
   if (!q) return;
-
   if (filter.value === "artist") q += " artist";
   if (filter.value === "song") q += " song";
 
@@ -129,6 +129,7 @@ function syncFullPlayer() {
   fullCover.src = s.artworkUrl100.replace("100x100","600x600");
   fullTitle.textContent = s.trackName;
   fullArtist.textContent = s.artistName;
+  openLyrics();
 }
 
 /* LYRICS */
@@ -137,11 +138,19 @@ function openLyrics() {
   lyricsModal.style.display = "block";
   lyricsTitle.textContent = `${s.trackName} – ${s.artistName}`;
   lyricsText.textContent = "Loading lyrics...";
+  fullLyricsText.textContent = "Loading lyrics...";
 
   fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(s.artistName)}/${encodeURIComponent(s.trackName)}`)
     .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => lyricsText.textContent = d.lyrics || "Lyrics not available.")
-    .catch(() => lyricsText.textContent = "Lyrics not available.");
+    .then(d => {
+      const text = d.lyrics || "Lyrics not available.";
+      lyricsText.textContent = text;
+      fullLyricsText.textContent = text;
+    })
+    .catch(() => {
+      lyricsText.textContent = "Lyrics not available.";
+      fullLyricsText.textContent = "Lyrics not available.";
+    });
 }
 function closeLyrics() {
   lyricsModal.style.display = "none";
@@ -201,6 +210,6 @@ render(recentGrid, recent);
 
 function formatTime(t) {
   const m = Math.floor(t / 60);
-  const s = Math.floor(t % 60).toString().padStart(2, "0");
+  const s = Math.floor(t % 60).toString().padStart(2,"0");
   return `${m}:${s}`;
 }
