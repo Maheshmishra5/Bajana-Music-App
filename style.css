@@ -1,3 +1,4 @@
+/* ========== BASE ========== */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -5,9 +6,9 @@ body {
   color: white;
   padding-bottom: 120px;
 }
-
 body.amoled { background: #000; }
 
+/* Top Bar */
 .top-bar {
   display: flex;
   align-items: center;
@@ -15,15 +16,12 @@ body.amoled { background: #000; }
   padding: 15px 25px;
   background: #000;
 }
-
 .menu-btn {
   background: none;
   border: none;
   color: #1db954;
   font-size: 24px;
-  cursor: pointer;
 }
-
 .top-bar h1 { color: #1db954; }
 
 /* Side Menu */
@@ -38,36 +36,29 @@ body.amoled { background: #000; }
   transition: 0.3s;
   z-index: 10000;
 }
-
 .side-menu.show { left: 0; }
-
 .side-menu a {
   display: block;
   padding: 10px 0;
   cursor: pointer;
   color: white;
-  text-decoration: none;
 }
-
 .side-menu a:hover { color: #1db954; }
 
 /* Search */
 .search-box {
   display: flex;
-  align-items: center;
   gap: 6px;
   background: white;
   padding: 5px;
   border-radius: 30px;
 }
-
 .search-box input,
 .search-box select {
   border: none;
   outline: none;
   padding: 8px;
 }
-
 .search-box button {
   background: #1db954;
   border: none;
@@ -78,9 +69,7 @@ body.amoled { background: #000; }
 /* Sections */
 h2 {
   padding: 22px 25px 12px;
-  font-size: 20px;
 }
-
 .music-grid {
   padding: 0 25px 30px;
   display: grid;
@@ -96,12 +85,10 @@ h2 {
   cursor: pointer;
   transition: 0.25s;
 }
-
 .card:hover {
   background: #282828;
   transform: translateY(-6px);
 }
-
 .card img {
   width: 100%;
   border-radius: 10px;
@@ -117,24 +104,18 @@ h2 {
   align-items: center;
   padding: 12px 20px;
 }
-
 .player img {
   width: 55px;
   height: 55px;
   border-radius: 6px;
-  cursor: pointer;
 }
-
 .info { flex: 1; margin-left: 15px; }
-
 .seek {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .seek input { flex: 1; }
-
 .controls button {
   background: none;
   border: none;
@@ -150,7 +131,6 @@ h2 {
   inset: 0;
   background: rgba(0,0,0,0.85);
 }
-
 .modal-box {
   background: #181818;
   width: 60%;
@@ -166,26 +146,73 @@ h2 {
   position: fixed;
   inset: 0;
   background: radial-gradient(circle at top, #2a2a2a, #000);
-  text-align: center;
-  padding-top: 40px;
   z-index: 9999;
 }
-
-.full-cover { width: 280px; border-radius: 12px; }
-
-.full-seek {
+.full-layout {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 80%;
-  margin: 20px auto;
+  height: 100%;
+  padding: 40px;
+  gap: 30px;
 }
-
+.full-music { width: 45%; text-align: center; }
+.full-lyrics {
+  width: 55%;
+  background: #111;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+}
+.full-lyrics h3 { color: #1db954; }
+.full-lyrics pre {
+  white-space: pre-wrap;
+  color: #ccc;
+  line-height: 1.6;
+}
 .close-full {
   position: absolute;
   top: 20px;
   right: 25px;
   font-size: 30px;
-  cursor: pointer;
+}
+
+/* ========== 📱 SPOTIFY MOBILE UI ========== */
+@media (max-width: 768px) {
+
+  .search-box select { display: none; }
+
+  .side-menu {
+    width: 100%;
+    left: -100%;
+  }
+  .side-menu.show { left: 0; }
+
+  .music-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 15px 20px;
+  }
+
+  .card {
+    min-width: 150px;
+    padding: 10px;
+  }
+
+  .seek { display: none; }
+
+  .full-layout {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .full-music,
+  .full-lyrics {
+    width: 100%;
+  }
+
+  .full-lyrics {
+    max-height: 40vh;
+    margin-top: 20px;
+  }
 }
 
