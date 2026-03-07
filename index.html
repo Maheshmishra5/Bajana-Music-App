@@ -4,7 +4,19 @@
   <meta charset="UTF-8">
   <title>Bajana Music</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
+  <script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(function(registration) {
+      console.log("Service Worker registered successfully");
+    })
+    .catch(function(error) {
+      console.log("Service Worker registration failed:", error);
+    });
+}
+</script>
 <body>
 
 <!-- Side Menu -->
@@ -129,6 +141,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
